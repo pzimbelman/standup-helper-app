@@ -24,6 +24,7 @@ class ViewController: UITableViewController  {
         // This view controller itself will provide the delegate methods and row data for the table view.
         tableView.delegate = self
         tableView.dataSource = self
+        self.title = "Tasks"
     }
     
     // number of rows in table view
