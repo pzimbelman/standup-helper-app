@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		113DF8501EE4B4BC0023450C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113DF84F1EE4B4BC0023450C /* AppDelegate.swift */; };
 		113DF8521EE4B4BC0023450C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113DF8511EE4B4BC0023450C /* ViewController.swift */; };
-		113DF8551EE4B4BC0023450C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 113DF8531EE4B4BC0023450C /* Main.storyboard */; };
 		113DF8571EE4B4BC0023450C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 113DF8561EE4B4BC0023450C /* Assets.xcassets */; };
-		113DF85A1EE4B4BC0023450C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 113DF8581EE4B4BC0023450C /* LaunchScreen.storyboard */; };
 		113DF8651EE4B4BC0023450C /* ToDoStandupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113DF8641EE4B4BC0023450C /* ToDoStandupTests.swift */; };
 		113DF8701EE4B4BC0023450C /* ToDoStandupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113DF86F1EE4B4BC0023450C /* ToDoStandupUITests.swift */; };
 /* End PBXBuildFile section */
@@ -37,9 +35,7 @@
 		113DF84C1EE4B4BC0023450C /* ToDoStandup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoStandup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		113DF84F1EE4B4BC0023450C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		113DF8511EE4B4BC0023450C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		113DF8541EE4B4BC0023450C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		113DF8561EE4B4BC0023450C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		113DF8591EE4B4BC0023450C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		113DF85B1EE4B4BC0023450C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		113DF8601EE4B4BC0023450C /* ToDoStandupTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoStandupTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		113DF8641EE4B4BC0023450C /* ToDoStandupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoStandupTests.swift; sourceTree = "<group>"; };
@@ -99,9 +95,7 @@
 			children = (
 				113DF84F1EE4B4BC0023450C /* AppDelegate.swift */,
 				113DF8511EE4B4BC0023450C /* ViewController.swift */,
-				113DF8531EE4B4BC0023450C /* Main.storyboard */,
 				113DF8561EE4B4BC0023450C /* Assets.xcassets */,
-				113DF8581EE4B4BC0023450C /* LaunchScreen.storyboard */,
 				113DF85B1EE4B4BC0023450C /* Info.plist */,
 			);
 			path = ToDoStandup;
@@ -232,9 +226,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				113DF85A1EE4B4BC0023450C /* LaunchScreen.storyboard in Resources */,
 				113DF8571EE4B4BC0023450C /* Assets.xcassets in Resources */,
-				113DF8551EE4B4BC0023450C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,25 +286,6 @@
 			targetProxy = 113DF86C1EE4B4BC0023450C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		113DF8531EE4B4BC0023450C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				113DF8541EE4B4BC0023450C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		113DF8581EE4B4BC0023450C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				113DF8591EE4B4BC0023450C /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		113DF8721EE4B4BC0023450C /* Debug */ = {
