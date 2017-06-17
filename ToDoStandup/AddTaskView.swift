@@ -22,15 +22,10 @@ class AddTaskView: UIView {
         
         nameField.borderStyle = .roundedRect
         nameField.layer.borderColor = UIColor.black.cgColor
-        nameField.placeholder = "Task Name"
-        let label3 = UILabel()
-        label3.translatesAutoresizingMaskIntoConstraints = false
-        label3.backgroundColor = UIColor.yellow
-        label3.text = "SOME"
+        nameField.placeholder = "Task Title"
 
         self.addSubview(addButton)
         self.addSubview(nameField)
-        self.addSubview(label3)
         let views = ["addButton": addButton, "nameField": nameField] as [String : Any]
         
         var allConstraints = [NSLayoutConstraint]()
@@ -46,7 +41,6 @@ class AddTaskView: UIView {
             views: views)
         
         allConstraints += [NSLayoutConstraint(item: addButton, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0)]
-        self.addConstraints(allConstraints)
         allConstraints += [NSLayoutConstraint(item: nameField, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0)]
         self.addConstraints(allConstraints)
 
