@@ -43,13 +43,10 @@ class AddTaskView: UIView {
         allConstraints += [NSLayoutConstraint(item: addButton, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0)]
         allConstraints += [NSLayoutConstraint(item: nameField, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0)]
         self.addConstraints(allConstraints)
-
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
     
 }

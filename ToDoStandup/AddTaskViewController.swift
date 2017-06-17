@@ -9,12 +9,13 @@
 import UIKit
 class AddTaskViewController: UIViewController  {
     
+    let addView = AddTaskView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         self.title = "New Task"
-        let addView = AddTaskView()
         addView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(addView)
         
@@ -31,5 +32,20 @@ class AddTaskViewController: UIViewController  {
             views: ["addView": addView])
         self.view.addConstraints(horizontalConstraints)
         self.view.addConstraints(verticalContraints)
+        
+        addView.addButton.addTarget(self, action: #selector(AddTaskViewController.handleSaveClick), for: .touchUpInside)
+    }
+    
+    func handleSaveClick() {
+        let titleContent = addView.nameField.text
+        let trimmedContent = titleContent?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+
+        if(trimmedContent == "") {
+            let alert = UIAlertController(title: "Error", message: "Title must be set", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
