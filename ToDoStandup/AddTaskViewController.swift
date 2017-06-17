@@ -45,6 +45,11 @@ class AddTaskViewController: UIViewController  {
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let task = Task(context: context) // Link Task & Context
+            task.title = trimmedContent
+            task.completedAt = NSDate()
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
             self.navigationController?.popViewController(animated: true)
         }
     }
