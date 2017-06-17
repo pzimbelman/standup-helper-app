@@ -10,15 +10,19 @@ import Foundation
 import UIKit
 
 class AddTaskView: UIView {
-    let addButton = UIButton()
+    let addButton = UIButton(type: UIButtonType.system)
     let nameField = UITextField()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.red
+        self.backgroundColor = UIColor.white
         nameField.translatesAutoresizingMaskIntoConstraints = false
         addButton.translatesAutoresizingMaskIntoConstraints = false
-        addButton.titleLabel?.text = "TEST"
+        addButton.setTitle("Save Task", for: .normal)
+        
+        nameField.borderStyle = .roundedRect
+        nameField.layer.borderColor = UIColor.black.cgColor
+        nameField.placeholder = "Task Name"
         let label3 = UILabel()
         label3.translatesAutoresizingMaskIntoConstraints = false
         label3.backgroundColor = UIColor.yellow
@@ -27,22 +31,25 @@ class AddTaskView: UIView {
         self.addSubview(addButton)
         self.addSubview(nameField)
         self.addSubview(label3)
-        let views = ["addButton": addButton, "nameField": nameField, "label": label3] as [String : Any]
+        let views = ["addButton": addButton, "nameField": nameField] as [String : Any]
         
         var allConstraints = [NSLayoutConstraint]()
-        let verticalContraints = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:[label(30)]-10-|",
+        allConstraints += NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-100-[nameField(40)]-20-[addButton]",
             options: [],
             metrics: nil,
             views: views)
-        let horizontalConstraints = NSLayoutConstraint.constraints(
-            withVisualFormat: "H:|-10-[label(100)]",
+        allConstraints += NSLayoutConstraint.constraints(
+            withVisualFormat: "H:[nameField(250)]",
             options: [],
             metrics: nil,
             views: views)
-        allConstraints += verticalContraints
-        allConstraints += horizontalConstraints
+        
+        allConstraints += [NSLayoutConstraint(item: addButton, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0)]
         self.addConstraints(allConstraints)
+        allConstraints += [NSLayoutConstraint(item: nameField, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0)]
+        self.addConstraints(allConstraints)
+
         
     }
     
