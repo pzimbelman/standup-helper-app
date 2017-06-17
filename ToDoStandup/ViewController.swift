@@ -25,6 +25,8 @@ class ViewController: UITableViewController  {
         tableView.delegate = self
         tableView.dataSource = self
         self.title = "Tasks"
+        let addButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(ViewController.showAddView))
+        self.navigationItem.rightBarButtonItem = addButton
     }
     
     // number of rows in table view
@@ -47,5 +49,10 @@ class ViewController: UITableViewController  {
     // method to run when table view cell is tapped
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You tapped cell number \(indexPath.row).")
+    }
+    
+    func showAddView() {
+        let addTaskViewController = AddTaskViewController()
+        self.navigationController?.pushViewController(addTaskViewController, animated: true)
     }
 }
