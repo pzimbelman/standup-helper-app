@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SWTableViewCell
 class ViewController: UITableViewController  {
     
     // Data model: These strings will be the data for the table view cells
@@ -46,12 +47,13 @@ class ViewController: UITableViewController  {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // create a new cell if needed or reuse an old one
-        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
+        let cell:SWTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! SWTableViewCell!
         
         // set the text from the data model
         if let title = self.tasks[indexPath.row].title {
           cell.textLabel?.text = title
         }
+        cell.leftUtilityButtons = cellButtons() as! [Any]
         
         return cell
     }
@@ -77,5 +79,11 @@ class ViewController: UITableViewController  {
     func showAddView() {
         let addTaskViewController = AddTaskViewController()
         self.navigationController?.pushViewController(addTaskViewController, animated: true)
+    }
+    
+    func cellButtons() -> NSMutableArray {
+        let buttons = NSMutableArray()
+        buttons.sw_addUtilityButton(with: UIColor.init(colorLiteralRed: 0.07, green: 0.75, blue: 0.16, alpha: 1.0), icon: UIImage.init(imageLiteralResourceName: "check.png"))
+        return buttons
     }
 }
