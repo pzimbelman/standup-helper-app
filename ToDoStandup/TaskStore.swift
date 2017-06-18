@@ -12,15 +12,11 @@ import UIKit
 
 class TaskStore {
     
+    let appDelegate =
+        UIApplication.shared.delegate as! AppDelegate
     func getAllTasks() -> [Task] {
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return [Task]()
-        }
-        
         let managedContext =
             appDelegate.persistentContainer.viewContext
-        
 
         var tasks = [Task]()
         do {
@@ -32,12 +28,9 @@ class TaskStore {
     }
     
     func deleteTask(task: Task) {
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
         let managedContext =
             appDelegate.persistentContainer.viewContext
+        
         managedContext.delete(task)
         appDelegate.saveContext()
     }
