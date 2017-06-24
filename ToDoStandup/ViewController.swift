@@ -56,6 +56,23 @@ class ViewController: UITableViewController  {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
+            let task = self.tasks[index.row]
+            self.taskStore.deleteTask(task: task)
+            self.tasks = self.taskStore.getAllTasks()
+            tableView.deleteRows(at: [index as IndexPath], with: UITableViewRowAnimation.automatic)
+        }
+        delete.backgroundColor = .red
+        
+        let finish = UITableViewRowAction(style: .normal, title: "Finish") { action, index in
+            print("favorite button tapped")
+        }
+        finish.backgroundColor = .green
+        
+        return [finish, delete]
+    }
+    
     // method to run when table view cell is tapped
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You tapped cell number \(indexPath.row).")
@@ -74,8 +91,20 @@ class ViewController: UITableViewController  {
         }
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "To Do"
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func showAddView() {
         let addTaskViewController = AddTaskViewController()
         self.navigationController?.pushViewController(addTaskViewController, animated: true)
+    }
+    
+    func cellSwiped() {
+        
     }
 }
