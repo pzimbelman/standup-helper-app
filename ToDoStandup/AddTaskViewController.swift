@@ -48,7 +48,7 @@ class AddTaskViewController: UIViewController  {
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             let task = Task(context: context) // Link Task & Context
             task.title = trimmedContent
-            task.completedAt = NSDate()
+            task.createdAt = NSDate()
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
             self.navigationController?.popViewController(animated: true)
         }

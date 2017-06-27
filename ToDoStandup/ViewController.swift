@@ -18,7 +18,7 @@ class ViewController: UITableViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tasks = taskStore.getAllTasks()
+        tasks = taskStore.getAllRemainingTasks()
         
         // Register the table view cell class and its reuse id
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
@@ -33,7 +33,7 @@ class ViewController: UITableViewController  {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        tasks = taskStore.getAllTasks()
+        tasks = taskStore.getAllRemainingTasks()
         tableView.reloadData()
     }
     
@@ -60,13 +60,16 @@ class ViewController: UITableViewController  {
         let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
             let task = self.tasks[index.row]
             self.taskStore.deleteTask(task: task)
-            self.tasks = self.taskStore.getAllTasks()
+            self.tasks = self.taskStore.getAllRemainingTasks()
             tableView.deleteRows(at: [index as IndexPath], with: UITableViewRowAnimation.automatic)
         }
         delete.backgroundColor = .red
         
         let finish = UITableViewRowAction(style: .normal, title: "Finish") { action, index in
-            print("favorite button tapped")
+            let task = self.tasks[index.row]
+            self.taskStore.finishTask(task: task)
+            self.tasks = self.taskStore.getAllRemainingTasks()
+            tableView.reloadData()
         }
         finish.backgroundColor = .green
         
@@ -82,15 +85,6 @@ class ViewController: UITableViewController  {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete {
-            let task = self.tasks[indexPath.row]
-            taskStore.deleteTask(task: task)
-            tasks = taskStore.getAllTasks()
-            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
-        }
-    }
-    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "To Do"
     }
@@ -102,9 +96,5 @@ class ViewController: UITableViewController  {
     func showAddView() {
         let addTaskViewController = AddTaskViewController()
         self.navigationController?.pushViewController(addTaskViewController, animated: true)
-    }
-    
-    func cellSwiped() {
-        
     }
 }
