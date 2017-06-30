@@ -53,17 +53,18 @@ class ViewController: UITableViewController  {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // create a new cell if needed or reuse an old one
-        var taskList = [Task]()
-        if(indexPath.section == 0) {
-            taskList = todayTasks
-        } else {
-            taskList = yesterdayTasks
-        }
+        let task = taskForIndex(index: indexPath)
         let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
         
         // set the text from the data model
-        if let title = taskList[indexPath.row].title {
-          cell.textLabel?.text = title
+        if indexPath.section == 0 && task.completedAt != nil {
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: task.title!)
+            attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
+            cell.textLabel?.attributedText = attributeString
+        } else {
+            if let title = task.title {
+                cell.textLabel?.text = title
+            }
         }
         
         return cell
