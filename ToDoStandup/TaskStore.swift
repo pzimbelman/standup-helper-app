@@ -107,10 +107,12 @@ class TaskStore {
         let date = Date()
         let cal = Calendar(identifier: .gregorian)
         let midnightThisMorning = cal.startOfDay(for: date)
+
+        let dayBefore = Calendar.current.date(byAdding: .day, value: -1, to: midnightThisMorning)
         
         // Configure Fetch Request
         fetchRequest.entity = entityDescription
-        fetchRequest.predicate = NSPredicate(format: "completedAt != nil AND completedAt < %@", midnightThisMorning as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "completedAt != nil AND completedAt < %@ AND completedAt > %@", midnightThisMorning as CVarArg, dayBefore! as CVarArg)
         do {
             tasks = try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
